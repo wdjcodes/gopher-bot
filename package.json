@@ -1,0 +1,51 @@
+{
+	"name": "gopher-bot",
+	"version": "0.0.0",
+	"description": "All purpose (maybed someday) discord bot",
+	"main": "src/index.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"lint": "npm run lint:tsc && npm run lint:svelte-check && npm run lint:eslint",
+		"lint:tsc": "tsc --noEmit --project ./tsconfig.json",
+		"lint:svelte-check": "svelte-check",
+		"lint:eslint": "eslint .",
+		"format:check": "prettier --plugin-search-dir . --check .",
+		"format": "prettier --plugin-search-dir . --write .",
+		"pre-commit": "lint-staged",
+		"prepare": "husky install"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/wdjcodes/gopher-bot.git"
+	},
+	"author": "wdjcodes",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/wdjcodes/gopher-bot/issues"
+	},
+	"homepage": "https://github.com/wdjcodes/gopher-bot#readme",
+	"dependencies": {
+		"discord.js": "^14.11.0"
+	},
+	"devDependencies": {
+		"@types/node": "^20.3.3",
+		"@typescript-eslint/eslint-plugin": "^5.60.1",
+		"@typescript-eslint/parser": "^5.60.1",
+		"eslint": "^8.44.0",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.3",
+		"prettier": "^2.8.8",
+		"ts-node": "^10.9.1",
+		"typescript": "^5.1.6"
+	},
+	"lint-staged": {
+		"*.json": [
+			"prettier --write"
+		],
+		"*.{ts, tsx, d.ts, cts, d.cts, mts, d.mts}": [
+			"prettier --write",
+			"eslint --fix",
+			"bash -c \"tsc -p ./tsconfig.json --noEmit\""
+		]
+	}
+}
