@@ -4,6 +4,7 @@
 	"description": "All purpose (maybed someday) discord bot",
 	"main": "src/index.ts",
 	"scripts": {
+		"dev": "nodemon ./src/index.ts",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "npm run lint:tsc && npm run lint:svelte-check && npm run lint:eslint",
 		"lint:tsc": "tsc --noEmit --project ./tsconfig.json",
@@ -12,7 +13,8 @@
 		"format:check": "prettier --plugin-search-dir . --check .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"pre-commit": "lint-staged",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"deploy:commands": "ts-node ./src/scripts/deploy-commands.ts"
 	},
 	"repository": {
 		"type": "git",
@@ -25,7 +27,8 @@
 	},
 	"homepage": "https://github.com/wdjcodes/gopher-bot#readme",
 	"dependencies": {
-		"discord.js": "^14.11.0"
+		"discord.js": "^14.11.0",
+		"module-alias": "^2.2.3"
 	},
 	"devDependencies": {
 		"@types/node": "^20.3.3",
@@ -34,8 +37,10 @@
 		"eslint": "^8.44.0",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.3",
+		"nodemon": "^2.0.22",
 		"prettier": "^2.8.8",
 		"ts-node": "^10.9.1",
+		"tsconfig-paths": "^4.2.0",
 		"typescript": "^5.1.6"
 	},
 	"lint-staged": {
